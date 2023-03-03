@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="background">
+    <file>images/options_menu.jpg</file>
+  </qresource>
+  <qresource prefix="tv">
+    <file>images/options_menu_TV.png</file>
+  </qresource>
+  <qresource prefix="movie">
+    <file>gifs/options.gif</file>
+  </qresource>
+  <qresource prefix="tv_screen">
+    <file>images/options_menu_TV_screen.png</file>
+  </qresource>
+</RCC>
