@@ -109,6 +109,7 @@ class MainWindow(QMainWindow):
                     "                                                             Я\n" +
                     "Я:                                                                           " +
                     "                                           Koshenyatkovv23\n")
+
         dlg.exec()
 
     @pyqtSlot()
