@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>800</height>
+    <height>795</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -241,8 +241,8 @@
    <widget class="QCalendarWidget" name="calendarWidget">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>260</y>
+      <x>100</x>
+      <y>290</y>
       <width>491</width>
       <height>281</height>
      </rect>
@@ -251,8 +251,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>190</y>
+      <x>100</x>
+      <y>220</y>
       <width>491</width>
       <height>91</height>
      </rect>
@@ -278,8 +278,8 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>510</y>
+      <x>100</x>
+      <y>540</y>
       <width>491</width>
       <height>91</height>
      </rect>
@@ -299,6 +299,84 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="p_button">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>520</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>P</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="g_button">
+    <property name="geometry">
+     <rect>
+      <x>749</x>
+      <y>580</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>G</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="r_button">
+    <property name="geometry">
+     <rect>
+      <x>749</x>
+      <y>670</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>R</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="b_button">
+    <property name="geometry">
+     <rect>
+      <x>749</x>
+      <y>550</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>B</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="y_button">
+    <property name="geometry">
+     <rect>
+      <x>749</x>
+      <y>610</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Y</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="o_button">
+    <property name="geometry">
+     <rect>
+      <x>749</x>
+      <y>640</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>O</string>
+    </property>
+   </widget>
    <zorder>background_label</zorder>
    <zorder>movie_label</zorder>
    <zorder>tv_label</zorder>
@@ -311,6 +389,12 @@
    <zorder>label_5</zorder>
    <zorder>sound_colok</zorder>
    <zorder>colok_percentage_label</zorder>
+   <zorder>p_button</zorder>
+   <zorder>g_button</zorder>
+   <zorder>r_button</zorder>
+   <zorder>b_button</zorder>
+   <zorder>y_button</zorder>
+   <zorder>o_button</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

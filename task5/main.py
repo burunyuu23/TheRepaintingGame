@@ -350,6 +350,16 @@ class OptionsWindow(QMainWindow):
 
         self.window().setWindowIcon(QIcon("./images/options_icon.png"))
 
+        self.buttons = [self.ui.r_button, self.ui.o_button, self.ui.y_button,
+                        self.ui.g_button, self.ui.b_button, self.ui.p_button]
+
+        for i in range(len(self.buttons)):
+            num = copy.copy(i + 1)
+            self.buttons[i].setStyleSheet('QPushButton {background-color: ' + game.COLORS[num].name()
+                                          + '; color: ' + game.COLORS[num].name() + '}')
+            self.buttons[i].setText(str(num))
+            self.buttons[i].clicked.connect(self._color_change_click)
+
         volume = self.parent.player.volume()
         self.ui.colok_percentage_label.setText(str(volume) + "%")
         self.parent.player.setVolume(volume)
@@ -364,8 +374,18 @@ class OptionsWindow(QMainWindow):
     @pyqtSlot()
     def _home_click(self):
         self._backmovie_init()
-
         Timer(2.5, self._bye_bye).start()
+
+    @pyqtSlot()  # TODO
+    def _color_change_click(self, ):
+        button = self.sender()
+        text = button.text()
+        value = int(text)
+
+        color = QColorDialog.getColor()
+        game.COLORS[value] = color
+        button.setStyleSheet('QPushButton {background-color: ' + game.COLORS[value].name()
+                                      + '; color: ' + game.COLORS[value].name() + '}')
 
 
 if __name__ == '__main__':
