@@ -19,8 +19,13 @@ class Game:
         "PLAYING": 0, 'LOSE': 1, 'WON': 2
     }
 
+    COLOR_STATUS = {
+        "PLAYING": 0, 'WON': 1
+    }
+
     def __init__(self):
         self.map = [[Cell() for i in range(12)] for j in range(12)]
+        self.color_map_count = [0 for i in range(len(COLORS))]
         self.main_cell = self.map[0][0]
         self.main_cell.captured(self.main_cell.value)
         self._status = Game.STATUS["PLAYING"]
@@ -38,6 +43,7 @@ class Game:
         self._status = value
 
     def step(self, num):
+        self.color_map_count = [0 for i in range(len(COLORS))]
         if self.main_cell.value != num and self.status == Game.STATUS["PLAYING"]:
             self.map[0][0].change_value(num)
             self.map = self.map_capture()
@@ -60,19 +66,27 @@ class Game:
                 self.status = Game.STATUS["LOSE"]
 
     def restart(self):
-        # self.map = [[Cell(color=2) for i in range(12)] for j in range(12)]
-        # self.map[0][0] = Cell(color=1)
+        self.map = [[Cell(color=2) for i in range(12)] for j in range(12)]
+        self.map[0][0] = Cell(color=1)
+        self.map[0][1] = Cell(color=3)
+        self.map[1][1] = Cell(color=4)
 
-        self.map = [[Cell() for i in range(12)] for j in range(12)]
+        self.map = [[Cell() for i in range(12)] for j in range(12)]  # Delete it if you want test fast win
 
         self.main_cell = self.map[0][0]
         self.main_cell.captured(self.main_cell.value)
+
+        while self.map[0][1].value == self.main_cell.value:
+            self.map[0][1] = Cell()
+        while self.map[1][0].value == self.main_cell.value:
+            self.map[1][0] = Cell()
+
         self.status = Game.STATUS["PLAYING"]
         self.round = 0
 
     def map_capture(self):
         old_map = self.map
-        reached_map = [[False for i in range(12)] for i in range(12)]
+        reached_map = [[False for _ in range(12)] for __ in range(12)]
         reached_map[0][0] = False
 
         max_i = len(old_map)

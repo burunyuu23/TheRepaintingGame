@@ -5,12 +5,11 @@ from threading import Timer
 
 from PyQt5 import Qt
 from PyQt5.QtCore import *
-from PyQt5.QtGui import QMovie, QIcon, QPixmap
+from PyQt5.QtGui import QMovie, QIcon
 from PyQt5.QtMultimedia import *
 from PyQt5.QtWidgets import *
 
 from task5 import game
-from task5.game import COLORS
 from windows.mainWindow import Ui_MainWindow as UI_Main
 from windows.optionsWindow import Ui_MainWindow as UI_Options
 from windows.gameWindow import Ui_MainWindow as UI_Game
@@ -100,15 +99,22 @@ class MainWindow(QMainWindow):
                     "способность преодолевать трудности с надеждой и позитивным настроем. " +
                     "То, как первый квадрат достигает своей мечты, имеет решающее значение и будет иметь долгосрочные "
                     "последствия. " +
-                    "Ленивый никогда не завоюет чьего-либо уважения.\n\n\n" +
+                    "Ленивый никогда не завоюет чьего-либо уважения.\n\n" +
+                    "Правила: \n" +
+                    "Выбираете цвет для следующего хода, если он совпадает с тем, \n" +
+                    "который слева, справа, сверху или снизу от захваченной области\n" +
+                    "(первоначально это самый верхний левый квадрат), то он добавляется в\n" +
+                    "захваченную область. \n\n" +
+                    "                         Цель: захватить всё поле меньше чем за 22 шага. \n" +
+                    "                                                                 GLHF!\n\n\n" +
                     "Автор шедевра:                                                               " +
-                    "                                                         Я\n" +
+                    "                                                 Я\n" +
                     "Режессер:                                                                    " +
-                    "                                                              Я\n" +
+                    "                                                       Я\n" +
                     "Сценарист:                                                                   " +
-                    "                                                             Я\n" +
+                    "                                                      Я\n" +
                     "Я:                                                                           " +
-                    "                                           Koshenyatkovv23\n")
+                    "                                    Шлыков Д.Г. 5.2\n")
 
         dlg.exec()
 
@@ -136,11 +142,11 @@ class GameWindow(QMainWindow):
         super(GameWindow, self).__init__()
         self.player = QMediaPlayer()
         self.playlist = QMediaPlaylist()
-
         self.init_music()
 
         self.parent = main_window
         self.ui = UI_Game()
+        self.buttons = []
         self.game = self.parent.game
         self.game.restart()
 
@@ -163,15 +169,15 @@ class GameWindow(QMainWindow):
         model = TableModel(self.game)
         self.ui.field_table.setModel(model)
 
-        buttons = [self.ui.r_button, self.ui.o_button, self.ui.y_button,
-                   self.ui.g_button, self.ui.b_button, self.ui.p_button]
+        self.buttons = [self.ui.r_button, self.ui.o_button, self.ui.y_button,
+                        self.ui.g_button, self.ui.b_button, self.ui.p_button]
 
-        for i in range(len(buttons)):
+        for i in range(len(self.buttons)):
             num = copy.copy(i + 1)
-            buttons[i].setStyleSheet('QPushButton {background-color: ' + game.COLORS[num].name()
-                                     + '; color: ' + game.COLORS[num].name() + '}')
-            buttons[i].setText(str(num))
-            buttons[i].clicked.connect(self.change_color_on_click)
+            self.buttons[i].setStyleSheet('QPushButton {background-color: ' + game.COLORS[num].name()
+                                          + '; color: transparent;}')
+            self.buttons[i].setText(str(num))
+            self.buttons[i].clicked.connect(self.change_color_on_click)
 
         self.ui.field_table.horizontalHeader().hide()
         self.ui.field_table.verticalHeader().hide()
@@ -184,6 +190,7 @@ class GameWindow(QMainWindow):
 
     def _movie_init(self):
         movie = QMovie("gifs/re_button.gif")
+        movie.start()
         self.ui.re_label.setMovie(movie)
         self.ui.re_button.setStyleSheet("""QPushButton,
         QPushButton:default,
@@ -193,23 +200,24 @@ class GameWindow(QMainWindow):
         QPushButton:pressed {
             background-color: transparent;
             border-color: transparent;
+            border: none;
             color: transparent;
         }""")
-        movie.start()
 
         movie = QMovie("gifs/home_button.gif")
+        movie.start()
         self.ui.home_label.setMovie(movie)
         self.ui.home_button.setStyleSheet("""QPushButton,
-QPushButton:default,
-QPushButton:hover,
-QPushButton:selected,
-QPushButton:disabled,
-QPushButton:pressed {
-    background-color: transparent;
-    border-color: transparent;
-    color: transparent;
+            QPushButton:default,
+            QPushButton:hover,
+            QPushButton:selected,
+            QPushButton:disabled,
+            QPushButton:pressed {
+                background-color: transparent;
+                border-color: transparent;
+                border: none;
+                color: transparent;
 }""")
-        movie.start()
 
     @pyqtSlot()
     def _restart_click(self):
@@ -310,6 +318,7 @@ class OptionsWindow(QMainWindow):
         super(OptionsWindow, self).__init__()
         self.parent = main_window
         self.ui = UI_Options()
+        self.buttons = []
         self.initUI()
 
         self.ui.sound_colok.valueChanged.connect(self.dialer_changed)
@@ -322,9 +331,6 @@ class OptionsWindow(QMainWindow):
         getValue = self.ui.sound_colok.value()
         self.ui.colok_percentage_label.setText(str(getValue) + "%")
         self.parent.player.setVolume(getValue)
-
-    def closeEvent(self, event):
-        event.accept()
 
     def _movie_init(self):
         movie = QMovie("gifs/options.gif")
@@ -356,7 +362,7 @@ class OptionsWindow(QMainWindow):
         for i in range(len(self.buttons)):
             num = copy.copy(i + 1)
             self.buttons[i].setStyleSheet('QPushButton {background-color: ' + game.COLORS[num].name()
-                                          + '; color: ' + game.COLORS[num].name() + '}')
+                                          + '; color: transparent;}')
             self.buttons[i].setText(str(num))
             self.buttons[i].clicked.connect(self._color_change_click)
 

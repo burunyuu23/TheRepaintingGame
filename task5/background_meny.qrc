@@ -4,5 +4,7 @@
   </qresource>
   <qresource prefix="gif">
     <file>gifs/lego-painting.gif</file>
+    <file>gifs/lego-painting.gif</file>
   </qresource>
+  <qresource prefix="newPrefix"/>
 </RCC>

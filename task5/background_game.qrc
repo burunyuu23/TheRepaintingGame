@@ -3,5 +3,8 @@
     <file>images/win_logo.png</file>
     <file>images/win_menu.jpeg</file>
   </qresource>
-  <qresource prefix="gif"/>
+  <qresource prefix="gif">
+    <file>gifs/home_button.gif</file>
+    <file>gifs/re_button.gif</file>
+  </qresource>
 </RCC>

@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="background">
     <file>images/options_menu.jpg</file>
+    <file>images/options_menu.bmp</file>
   </qresource>
   <qresource prefix="tv">
     <file>images/options_menu_TV.png</file>

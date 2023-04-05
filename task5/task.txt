@@ -25,12 +25,15 @@ field: 12x12
 
 qt5-tools designer
 
-cd C:\Users\zEzzLike\PycharmProjects\YAISP1\task5\windows
+
+cd ~/PycharmProjects/YAISP1/task5/windows
+
 pyuic5 mainWindow.ui -o mainWindow.py
 pyuic5 optionsWindow.ui -o optionsWindow.py
 pyuic5 gameWindow.ui -o gameWindow.py
 
-cd C:\Users\zEzzLike\PycharmProjects\YAISP1\task5
+cd ~/PycharmProjects/YAISP1/task5
+
 pyrcc5 -o background_meny_rc.py background_meny.qrc
 pyrcc5 -o background_options_rc.py background_options.qrc
 pyrcc5 -o background_game_rc.py background_game.qrc

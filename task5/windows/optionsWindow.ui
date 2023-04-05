@@ -27,8 +27,8 @@
    <widget class="QPushButton" name="back_button">
     <property name="geometry">
      <rect>
-      <x>-10</x>
-      <y>-50</y>
+      <x>0</x>
+      <y>-25</y>
       <width>461</width>
       <height>201</height>
      </rect>
@@ -83,7 +83,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="../background_options.qrc">:/background/images/options_menu.jpg</pixmap>
+     <pixmap resource="../background_options.qrc">:/background/images/options_menu.bmp</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="tv_screen_label">
@@ -402,7 +402,7 @@
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>28</height>
     </rect>
    </property>
    <widget class="QMenu" name="menusettings">

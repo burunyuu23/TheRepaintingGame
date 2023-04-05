@@ -558,11 +558,14 @@
     <property name="font">
      <font>
       <family>Minecraft Rus</family>
-      <pointsize>114</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-      <underline>true</underline>
+      <pointsize>112</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <underline>false</underline>
      </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
     <property name="text">
      <string>ПЕРЕКРАСКА</string>
